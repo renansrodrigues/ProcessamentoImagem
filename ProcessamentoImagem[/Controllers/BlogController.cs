@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProcessamentoImagem_.Controllers
 {
-    public class BlogController : Controller
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BlogController : ControllerBase
     {
 
         private IBlogAppService _blogAppService;

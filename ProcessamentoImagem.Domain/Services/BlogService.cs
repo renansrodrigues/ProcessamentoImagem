@@ -17,8 +17,9 @@ namespace ProcessamentoImagem.Domain.Services
 
         public async Task Inserir(dynamic request)
         {
+            
 
-            _arquivoService.UploadArquivoImagemAsync(request.Objimagem.arquivo, request.Objimagem.nome, request.Objimagem.extensao);
+            _arquivoService.UploadArquivoImagemAsync(Convert.FromBase64String(request.Objimagem.arquivo), request.Objimagem.nome, request.Objimagem.extensao);
 
         }
 

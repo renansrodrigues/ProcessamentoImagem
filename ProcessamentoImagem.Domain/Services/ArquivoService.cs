@@ -24,29 +24,22 @@ namespace ProcessamentoImagem.Domain.Services
 
             try
             {
-                azureFileShareName = "Nome";
+                azureFileShareName = "storageprocessadorarq";
 
                 CloudFileShare fileShare = _IStorageService.ObtemConexaoBlob().GetShareReference(azureFileShareName);
 
                 if (await fileShare.ExistsAsync())
                 {
                     CloudFileDirectory rootDir = fileShare.GetRootDirectoryReference();
-                    CloudFileDirectory diretorioArquivos = rootDir.GetDirectoryReference("Nome Diretorio Base");
+                    CloudFileDirectory diretorioArquivos = rootDir.GetDirectoryReference("imagens");
                     if (await diretorioArquivos.ExistsAsync())
                     {
-                        CloudFileDirectory diretorioPagFor = diretorioArquivos.GetDirectoryReference("Nome Subdiretorio");
-                        if (await diretorioPagFor.ExistsAsync())
-                        {
-                            CloudFileDirectory diretorioRemessa = diretorioPagFor.GetDirectoryReference("Nome Subdiretorio");
-
-                            if (await diretorioRemessa.ExistsAsync())
-                            {
+                                                                           
                                 string nomearquivo = $"{fileName}.{extensaoArquivo}";
-                                CloudFile myfile = diretorioRemessa.GetFileReference(nomearquivo);
+                                CloudFile myfile = diretorioArquivos.GetFileReference(nomearquivo);
                                 Stream fileStream = new MemoryStream(text);
                                 await myfile.UploadFromStreamAsync(fileStream);
-                            }
-                        }
+                                                    
                     }
                 }
             }

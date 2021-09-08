@@ -14,8 +14,8 @@ namespace ProcessamentoImagem.Domain.Services
         public  CloudFileClient ObtemConexaoBlob()
         {            
 
-            string accountName = Environment.GetEnvironmentVariable("");
-            string keyValue = Environment.GetEnvironmentVariable("");
+            string accountName = "storageprocessadorarq";
+            string keyValue = "";
 
             CloudStorageAccount storageAccount = new CloudStorageAccount(new StorageCredentials(accountName, keyValue), true);
             return storageAccount.CreateCloudFileClient();
