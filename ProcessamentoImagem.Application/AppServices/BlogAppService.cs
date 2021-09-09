@@ -1,5 +1,6 @@
 ﻿using ProcessamentoImagem.Application.AppServices.Interfaces;
 using ProcessamentoImagem.Domain.Services.Interface;
+using ProcessamentoImagem.Domain.Services.Model;
 using System.Threading.Tasks;
 
 namespace ProcessamentoImagem.Application.AppServices
@@ -13,9 +14,9 @@ namespace ProcessamentoImagem.Application.AppServices
             _blogService = blogService;
         }
 
-        public async Task Inserir(dynamic request)
+        public async Task<string> Inserir(Imagem request)
         {
-            _blogService.Inserir(request);
+          return  await _blogService.Inserir(request);
         }
 
     }

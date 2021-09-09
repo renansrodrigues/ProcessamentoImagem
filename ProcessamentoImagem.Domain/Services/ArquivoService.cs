@@ -24,14 +24,14 @@ namespace ProcessamentoImagem.Domain.Services
 
             try
             {
-                azureFileShareName = "storageprocessadorarq";
+                azureFileShareName = "imagens";
 
                 CloudFileShare fileShare = _IStorageService.ObtemConexaoBlob().GetShareReference(azureFileShareName);
 
                 if (await fileShare.ExistsAsync())
                 {
                     CloudFileDirectory rootDir = fileShare.GetRootDirectoryReference();
-                    CloudFileDirectory diretorioArquivos = rootDir.GetDirectoryReference("imagens");
+                    CloudFileDirectory diretorioArquivos = rootDir.GetDirectoryReference("imagemUpload");
                     if (await diretorioArquivos.ExistsAsync())
                     {
                                                                            

@@ -65,7 +65,7 @@ namespace ProcessamentoImagem_
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

@@ -1,4 +1,5 @@
 ﻿using ProcessamentoImagem.Domain.Services.Interface;
+using ProcessamentoImagem.Domain.Services.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,12 +16,13 @@ namespace ProcessamentoImagem.Domain.Services
             _arquivoService = arquivoService;
         }
 
-        public async Task Inserir(dynamic request)
+        public async Task<string> Inserir(Imagem request)
         {
             
 
-            _arquivoService.UploadArquivoImagemAsync(Convert.FromBase64String(request.Objimagem.arquivo), request.Objimagem.nome, request.Objimagem.extensao);
+          await  _arquivoService.UploadArquivoImagemAsync(Convert.FromBase64String(request.Arquivo), request.Nome, request.Extensao);
 
+            return "Concluido";
         }
 
     }

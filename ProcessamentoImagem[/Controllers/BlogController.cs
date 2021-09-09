@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProcessamentoImagem.Application.AppServices.Interfaces;
+using ProcessamentoImagem.Domain.Services.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,12 @@ namespace ProcessamentoImagem_.Controllers
 
 
         [HttpPost("inserir")]
-        public async Task<IActionResult> Inserir(dynamic request) => Ok(await _blogAppService.Inserir(request));
+        public async Task<IActionResult> Inserir([FromBody] Imagem request)
+        {           
+            
+           return Ok(await _blogAppService.Inserir(request));
+        }
+            
+
     }
 }
